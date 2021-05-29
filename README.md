@@ -25,3 +25,7 @@ ReactJs sample app in typescript with apollo client
 3. Create a `.env` file, copy contents from `example.env` into it and change values.
 
 4. Run `npm start`
+
+You are ready to build amazing things onto this.
+
+> NOTE: The mutation example shown in this sample project is using [this repo](https://github.com/sankalpkataria/inversify-graphql-example) as backend
