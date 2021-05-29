@@ -16,6 +16,9 @@ coverage/
 .vscode/**/*
 .vscode/
 
+.husky/**/*
+.husky/
+
 *.bat
 *.cfg
 *.yml
