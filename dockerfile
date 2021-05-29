@@ -37,36 +37,4 @@ ENV PATH $appDir/node_modules/.bin/:$PATH
 # used react-scripts start instead of npm start to be more clear as to whats actually being run
 CMD [ "react-scripts", "start" ]
 
-#========================================================================#
-#========================================================================#
-#========================================================================#
-
-# STAGE - 3
-# Prod-Base Stage - Stage extended from base to be used as an intermediate stage for prod stage.
-# Tools and dependecies for creating build/bundle are installed here
-# This stage will never be built into its own image
-FROM base as prod-base
-# install development dependencies and clear cache
-RUN npm install --only=development \
-    && npm cache clean -f
-COPY . $appDir
-RUN npm run build
-
-#========================================================================#
-#========================================================================#
-#========================================================================#
-# TODO: complete this stage
-# STAGE - 4
-# Prod Stage - New stage with a web server that will serve the bundled app generated in prod-base stage 
-# Uses Nginx image
-FROM nginx:alpine as prod
-# Add metadata
-LABEL org.opencontainers.image.author="sankalp kataria"
-LABEL org.opencontainers.image.title="Docker file for react-apollo-example"
-# Expose port for production
-EXPOSE 80
-# Copy bundled code from prod-base stage
-COPY --from=prod-base $appDir/build /usr/share/nginx/html
-
-# install and scan with trivy
-# install and scan with dive
+# TODO: Add stage for production

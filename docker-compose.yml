@@ -1,0 +1,18 @@
+version: '3.8'
+services: 
+    # Add other services here    
+    frontend:
+        build: 
+            context: .
+            target: dev
+        logging:
+            options:
+                max-size: "10m"
+                max-file: "3"
+                compress: "true"
+                labels: react-apollo-example
+        ports: 
+            - "3000:3000"
+        volumes: 
+            - .:/app/react-apollo-example
+            - /app/react-apollo-example/node_modules
