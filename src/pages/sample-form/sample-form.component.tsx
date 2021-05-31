@@ -30,6 +30,12 @@ export const SampleForm: FC<SampleFormProps> = ({ addUser }: SampleFormProps) =>
             name: '',
             age: '',
         },
+        validate: (values: User) => {
+            if (!values.email) {
+                return { email: 'Email is required' };
+            }
+            return {};
+        },
         onSubmit: async (values: User) => {
             await addUser(values);
             formik.resetForm();
@@ -57,6 +63,8 @@ export const SampleForm: FC<SampleFormProps> = ({ addUser }: SampleFormProps) =>
                     size="small"
                     inputProps={{ 'aria-label': 'email' }}
                     fullWidth={true}
+                    error={formik.touched.email && Boolean(formik.errors.email)}
+                    helperText={formik.touched.email && formik.errors.email}
                     {...formik.getFieldProps('email')}
                 />
                 <TextField
