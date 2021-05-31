@@ -81,7 +81,7 @@ export const SampleForm: FC<SampleFormProps> = ({ addUser }: SampleFormProps) =>
                     Submit
                 </Button>
             </form>
-            <Typography> Check Console after submit to see the results </Typography>
+            <Typography> Click &quot;See results&quot; below after submitting to see the results </Typography>
         </Card>
     );
 };
